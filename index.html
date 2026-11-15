@@ -402,8 +402,8 @@ footer a { color: var(--hero-ink) }
         <p class="chip-help" id="chip-help" hidden>¿No sabe qué chip tiene su Mac? Menú  → Acerca de esta Mac. Si dice «Chip Apple M1, M2, M3…» use la versión con chip Apple; si dice «Procesador Intel», la versión Intel.</p>
       </div>
       <div class="oses">
-        <a class="os" id="dl-win" rel="noopener"><b>Windows</b><span>Windows 10 y 11 · <span class="sz">45 MB</span></span></a>
-        <a class="os" id="dl-arm" rel="noopener"><b>Mac con chip Apple</b><span>M1, M2, M3, M4 · <span class="sz">35 MB</span></span></a>
+        <a class="os" id="dl-win" rel="noopener"><b>Windows</b><span>Windows 10 y 11 · <span class="sz">46 MB</span></span></a>
+        <a class="os" id="dl-arm" rel="noopener"><b>Mac con chip Apple</b><span>M1, M2, M3, M4 · <span class="sz">36 MB</span></span></a>
         <a class="os" id="dl-intel" rel="noopener"><b>Mac con Intel</b><span>Procesador Intel · <span class="sz">39 MB</span></span></a>
       </div>
       <div class="steps">
@@ -458,7 +458,7 @@ footer a { color: var(--hero-ink) }
 <footer>
   <div class="container">
     <a class="brand" href="#top"><svg aria-hidden="true"><use href="#logo"/></svg>Complex Education</a>
-    <span>Matemáticas interactivas para el aula · Versión 1.0.0</span>
+    <span>Matemáticas interactivas para el aula · Versión 1.0.1</span>
     <a href="#descargar">Descargar</a>
   </div>
 </footer>
@@ -466,9 +466,9 @@ footer a { color: var(--hero-ink) }
 <script>
 const BASE = "https://dqjaqavudeapmnzrmyzi.supabase.co/storage/v1/object/public/releases/";
 const FILES = {
-  win:   { file: "Complex_Education_1.0.0_Windows.zip",    label: "Descargar para Windows",            size: "45 MB" },
-  arm:   { file: "Complex_Education_1.0.0_Mac_arm64.zip",  label: "Descargar para Mac con chip Apple", size: "35 MB" },
-  intel: { file: "Complex_Education_1.0.0_Mac_x86_64.zip", label: "Descargar para Mac con Intel",      size: "39 MB" },
+  win:   { file: "Complex_Education_1.0.1_Windows.zip",    label: "Descargar para Windows",            size: "46 MB" },
+  arm:   { file: "Complex_Education_1.0.1_Mac_arm64.zip",  label: "Descargar para Mac con chip Apple", size: "36 MB" },
+  intel: { file: "Complex_Education_1.0.1_Mac_x86_64.zip", label: "Descargar para Mac con Intel",      size: "39 MB" },
 };
 const url = k => BASE + FILES[k].file + "?download";
 document.getElementById("dl-win").href = url("win");

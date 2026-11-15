@@ -3,112 +3,472 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Descarga Complex Education para Windows o Mac.">
-<title>Descargar Complex Education</title>
+<meta name="description" content="Complex Education: matemáticas interactivas para el aula, con simulaciones 3D, ecuaciones claras y clases en tres fases. Gratis para los docentes del colegio, en Windows y Mac.">
+<meta property="og:title" content="Complex Education — Matemáticas que se ven y se mueven">
+<meta property="og:image" content="img/cargo.jpg">
+<title>Complex Education</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap">
 <style>
-body{margin:0}
-
-/* Layout: one column, a recommended download on top, the other systems below, then three steps. */
 :root {
-  --bg: #f3f6fb; --surface: #ffffff; --ink: #18233a; --muted: #5a6680; --line: #dbe2ee;
-  --accent: #2756a3; --accent-ink: #ffffff; --soft: #e6eefb; --ok: #1f7a4d;
+  --bg: #f4f7fc; --surface: #ffffff; --surface-2: #eaf0fa; --ink: #142038; --muted: #56627c; --line: #d9e1ee;
+  --accent: #3466c9; --accent-2: #f2a93b; --accent-ink: #ffffff;
+  --hero-a: #0f1a33; --hero-b: #1c2f5c; --hero-ink: #eef3ff; --hero-muted: #b4c2e0;
   --display: "Lexend", "Segoe UI", system-ui, sans-serif;
   --body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --radius: 16px; --shadow: 0 18px 50px -18px rgba(15, 26, 51, .35);
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #121a2b; --surface: #1a2438; --ink: #e8eef8; --muted: #a3b0c8; --line: #2c3954;
-  --accent: #7fa6ea; --accent-ink: #0e1626; --soft: #22314d; --ok: #5cc493; color-scheme: dark } }
+  --bg: #0d1424; --surface: #151f35; --surface-2: #1b2842; --ink: #e9eff9; --muted: #a2afc8; --line: #2a3754;
+  --accent: #7fa4ef; --accent-ink: #0d1424; --hero-a: #0a1120; --hero-b: #16264a;
+  --shadow: 0 18px 50px -18px rgba(0, 0, 0, .7); color-scheme: dark } }
 :root[data-theme="dark"] {
-  --bg: #121a2b; --surface: #1a2438; --ink: #e8eef8; --muted: #a3b0c8; --line: #2c3954;
-  --accent: #7fa6ea; --accent-ink: #0e1626; --soft: #22314d; --ok: #5cc493; color-scheme: dark }
+  --bg: #0d1424; --surface: #151f35; --surface-2: #1b2842; --ink: #e9eff9; --muted: #a2afc8; --line: #2a3754;
+  --accent: #7fa4ef; --accent-ink: #0d1424; --hero-a: #0a1120; --hero-b: #16264a;
+  --shadow: 0 18px 50px -18px rgba(0, 0, 0, .7); color-scheme: dark }
+
 * { box-sizing: border-box }
-body { background: var(--bg); color: var(--ink); font: 16px/1.55 var(--body); }
-.wrap { max-width: 760px; margin: 0 auto; padding-block: 40px 56px;
-  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
-  display: grid; gap: 28px }
-header { display: grid; gap: 8px }
-.eyebrow { font: 600 13px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted) }
-h1 { font: 700 clamp(30px, 6vw, 42px)/1.1 var(--display); margin: 0; text-wrap: balance }
-.lead { color: var(--muted); margin: 0; max-width: 60ch }
-.main { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; display: grid; gap: 14px }
-.main h2 { font: 700 20px/1.25 var(--display); margin: 0 }
-.detected { font-size: 14px; color: var(--muted); margin: 0 }
-.btn { display: flex; align-items: center; justify-content: space-between; gap: 12px; text-decoration: none;
-  border-radius: 10px; padding: 16px 18px; font-weight: 600; border: 1px solid var(--line); color: var(--ink); background: var(--surface) }
-.btn small { font-weight: 500; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap }
-.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent) }
-.btn.primary small { color: var(--accent-ink); opacity: .85 }
-.btn:hover { filter: brightness(1.04) }
-.btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px }
-.others { display: grid; gap: 10px }
-.others h3, .steps h3 { font: 600 15px/1.3 var(--body); margin: 0; color: var(--muted) }
-.steps { display: grid; gap: 12px }
-ol { margin: 0; padding-left: 22px; display: grid; gap: 8px }
+html { scroll-behavior: smooth; scroll-padding-top: 72px }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--body); -webkit-font-smoothing: antialiased }
+img { max-width: 100%; height: auto; display: block }
+a { color: var(--accent) }
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance }
+p { margin: 0 }
+.container { width: 100%; max-width: 1180px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)) }
+section { padding-block: clamp(56px, 9vw, 104px) }
+.eyebrow { display: inline-block; font: 600 13px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--accent) }
+.section-head { display: grid; gap: 12px; max-width: 720px; margin-bottom: clamp(32px, 5vw, 56px) }
+.section-head.center { margin-inline: auto; text-align: center }
+.section-head h2 { font-size: clamp(28px, 4.4vw, 44px); line-height: 1.1; font-weight: 700 }
+.section-head p { color: var(--muted); font-size: clamp(16px, 1.8vw, 18px) }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 600 16px/1 var(--body);
+  padding: 15px 22px; border-radius: 12px; border: 1px solid transparent; cursor: pointer; transition: transform .15s, filter .15s }
+.btn:hover { transform: translateY(-1px); filter: brightness(1.06) }
+.btn:focus-visible { outline: 3px solid var(--accent-2); outline-offset: 3px }
+.btn svg { width: 20px; height: 20px; flex: none }
+.btn-primary { background: var(--accent-2); color: #1a1407 }
+.btn-ghost { color: var(--hero-ink); border-color: rgba(255,255,255,.28); background: rgba(255,255,255,.06) }
+.btn small { font-weight: 500; opacity: .8; font-variant-numeric: tabular-nums }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--hero-a) 88%, transparent);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.08) }
+.nav .container { display: flex; align-items: center; gap: 24px; height: 64px }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--hero-ink); text-decoration: none; font: 700 18px/1 var(--display); white-space: nowrap }
+.brand svg { width: 32px; height: 32px }
+.nav-links { display: flex; gap: 22px; margin-left: auto }
+.nav-links a { color: var(--hero-muted); text-decoration: none; font-weight: 500; font-size: 15px }
+.nav-links a:hover { color: var(--hero-ink) }
+.nav .btn { padding: 10px 16px; font-size: 15px }
+@media (max-width: 860px) { .nav-links { display: none } .nav .btn { margin-left: auto } }
+
+/* hero */
+.hero { position: relative; overflow: hidden; color: var(--hero-ink); padding-block: clamp(48px, 8vw, 96px) 0;
+  background: radial-gradient(1100px 520px at 75% 10%, rgba(52,102,201,.55), transparent 60%),
+              radial-gradient(700px 400px at 5% 90%, rgba(242,169,59,.18), transparent 60%),
+              linear-gradient(180deg, var(--hero-a), var(--hero-b)) }
+.hero-grid { display: grid; gap: clamp(32px, 5vw, 56px); text-align: center; justify-items: center }
+.hero h1 { font-size: clamp(36px, 7vw, 72px); line-height: 1.04; font-weight: 800; letter-spacing: -.02em; max-width: 15ch; margin-inline: auto }
+.hero h1 span { color: var(--accent-2) }
+.hero .lead { color: var(--hero-muted); font-size: clamp(17px, 2.1vw, 21px); max-width: 60ch; margin-top: 18px }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 28px }
+.hero-note { color: var(--hero-muted); font-size: 14px; margin-top: 14px }
+.pill { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--hero-ink);
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 6px 14px; margin-bottom: 20px }
+.pill b { background: var(--accent-2); color: #1a1407; border-radius: 999px; padding: 2px 8px; font-size: 12px }
+.hero-shot { width: min(1040px, 100%); border-radius: 18px 18px 0 0; overflow: hidden; box-shadow: 0 -10px 60px -10px rgba(52,102,201,.6);
+  border: 1px solid rgba(255,255,255,.14); border-bottom: 0 }
+.hero-shot img { aspect-ratio: 16 / 9; object-fit: cover; width: 100% }
+
+/* stats strip */
+.strip { background: var(--surface); border-bottom: 1px solid var(--line); padding-block: 28px }
+.strip .container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; text-align: center }
+.strip b { display: block; font: 700 clamp(22px, 3vw, 30px)/1.1 var(--display) }
+.strip span { color: var(--muted); font-size: 14px }
+@media (max-width: 700px) { .strip .container { grid-template-columns: repeat(2, 1fr); row-gap: 24px } }
+
+/* feature grid */
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px }
+@media (max-width: 960px) { .grid { grid-template-columns: repeat(2, 1fr) } }
+@media (max-width: 620px) { .grid { grid-template-columns: 1fr } }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; display: grid; gap: 10px; align-content: start }
+.card .ic { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; background: var(--surface-2); color: var(--accent) }
+.card .ic svg { width: 24px; height: 24px }
+.card h3 { font-size: 19px; font-weight: 600; line-height: 1.3 }
+.card p { color: var(--muted); font-size: 15px }
+
+/* showcase rows */
+.alt { background: var(--surface); border-block: 1px solid var(--line) }
+.row { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: center }
+.row + .row { margin-top: clamp(56px, 8vw, 96px) }
+.row.flip .media { order: 2 }
+@media (max-width: 860px) { .row, .row.flip { grid-template-columns: 1fr } .row.flip .media { order: 0 } }
+.media { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line) }
+.media img { aspect-ratio: 16 / 9; object-fit: cover; width: 100% }
+.copy { display: grid; gap: 14px }
+.copy h3 { font-size: clamp(24px, 3.2vw, 32px); line-height: 1.15; font-weight: 700 }
+.copy p { color: var(--muted); font-size: 17px }
+.ticks { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 10px }
+.ticks li { display: flex; gap: 10px; align-items: flex-start }
+.ticks li::before { content: ""; flex: none; width: 20px; height: 20px; margin-top: 2px; border-radius: 50%;
+  background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5.5 10.5l3 3 6-7'/%3E%3C/svg%3E") center/100% no-repeat }
+
+/* phases */
+.phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: ph }
+@media (max-width: 860px) { .phases { grid-template-columns: 1fr } }
+.phase { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: grid }
+.phase img { aspect-ratio: 16 / 9; object-fit: cover; width: 100%; border-bottom: 1px solid var(--line) }
+.phase div { padding: 22px 24px 26px; display: grid; gap: 8px }
+.phase .num { font: 700 13px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--accent) }
+.phase h3 { font-size: 21px; font-weight: 600 }
+.phase p { color: var(--muted); font-size: 15px }
+
+/* modules */
+.mods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px }
+@media (max-width: 860px) { .mods { grid-template-columns: repeat(2, 1fr) } }
+@media (max-width: 560px) { .mods { grid-template-columns: 1fr } }
+.mod { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; gap: 6px }
+.mod .tag { justify-self: start; font: 600 12px/1 var(--body); color: var(--accent); background: var(--surface-2); padding: 5px 9px; border-radius: 999px }
+.mod h3 { font-size: 17px; font-weight: 600 }
+.mod p { color: var(--muted); font-size: 14px }
+
+/* download */
+.dl { background: linear-gradient(180deg, var(--hero-a), var(--hero-b)); color: var(--hero-ink) }
+.dl .section-head p { color: var(--hero-muted) }
+.dl .eyebrow { color: var(--accent-2) }
+.dl-box { max-width: 860px; margin: 0 auto; display: grid; gap: 22px }
+.rec { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 18px; padding: clamp(22px, 4vw, 32px); display: grid; gap: 14px; justify-items: center; text-align: center }
+.rec .detected { color: var(--hero-muted) }
+.rec .btn-primary { font-size: 18px; padding: 18px 26px }
+.chip-help { color: var(--hero-muted); font-size: 14px; max-width: 60ch }
+.oses { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px }
+@media (max-width: 760px) { .oses { grid-template-columns: 1fr } }
+.os { display: grid; gap: 4px; text-decoration: none; color: var(--hero-ink); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.14);
+  border-radius: 14px; padding: 18px 20px; transition: background .15s, border-color .15s }
+.os:hover { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.3) }
+.os:focus-visible { outline: 3px solid var(--accent-2); outline-offset: 3px }
+.os b { font: 600 17px/1.3 var(--display) }
+.os span { color: var(--hero-muted); font-size: 14px }
+.os .sz { font-variant-numeric: tabular-nums }
+.steps { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.14); border-radius: 18px; padding: clamp(20px, 4vw, 28px); display: grid; gap: 16px }
+.steps h3 { font-size: 19px; font-weight: 600 }
 .tabs { display: flex; gap: 8px; flex-wrap: wrap }
-.tab { font: 600 14px var(--body); padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer }
-.tab[aria-selected="true"] { background: var(--soft); border-color: var(--accent); color: var(--ink) }
-.note { font-size: 14px; color: var(--muted); border-left: 3px solid var(--line); padding-left: 12px; margin: 0 }
-.chip-help { font-size: 14px; color: var(--muted); margin: 0 }
-code { font-size: 14px; background: var(--soft); padding: 1px 6px; border-radius: 6px }
-@media (prefers-reduced-motion: reduce) { * { transition: none !important } }
+.tab { font: 600 14px var(--body); padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.22); background: transparent; color: var(--hero-ink); cursor: pointer }
+.tab[aria-selected="true"] { background: var(--hero-ink); color: var(--hero-a); border-color: var(--hero-ink) }
+.steps ol { margin: 0; padding-left: 22px; display: grid; gap: 10px; color: var(--hero-ink) }
+.steps code { font-size: 14px; background: rgba(255,255,255,.1); padding: 1px 6px; border-radius: 6px }
+.steps .note { color: var(--hero-muted); font-size: 14px }
+
+/* faq */
+.faq { max-width: 820px; margin: 0 auto; display: grid; gap: 12px }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 4px 22px }
+summary { cursor: pointer; list-style: none; font: 600 17px/1.4 var(--display); padding: 16px 0; display: flex; justify-content: space-between; gap: 16px }
+summary::-webkit-details-marker { display: none }
+summary::after { content: "+"; font-weight: 400; font-size: 24px; line-height: 1; color: var(--accent) }
+details[open] summary::after { content: "−" }
+details p { color: var(--muted); padding-bottom: 18px }
+
+/* footer */
+footer { background: var(--hero-a); color: var(--hero-muted); padding-block: 40px; font-size: 14px }
+footer .container { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; justify-content: space-between }
+footer .brand { font-size: 16px }
+footer a { color: var(--hero-ink) }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important } }
 </style>
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 32 32">
+    <rect width="32" height="32" rx="9" fill="#3466c9"/>
+    <path d="M16 7 4 13l12 6 12-6z" fill="#fff"/>
+    <path d="M9 16v5c0 2 3.2 4 7 4s7-2 7-4v-5l-7 3.5z" fill="#f2a93b"/>
+    <path d="M27 13v6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></symbol>
+</svg>
 
-<div class="wrap">
-  <header>
-    <span class="eyebrow">Para docentes del colegio</span>
-    <h1>Descargar Complex Education</h1>
-    <p class="lead">El programa de matemáticas se instala en su computador y funciona con su propio equipo. Para entrar use el usuario y la contraseña que le entregó el administrador.</p>
-  </header>
-
-  <section class="main" aria-labelledby="rec">
-    <h2 id="rec">Descarga recomendada</h2>
-    <p class="detected" id="detected">Elija su sistema.</p>
-    <a class="btn primary" id="primary" href="#" target="_blank" rel="noopener">Descargar <small id="primary-size"></small></a>
-    <p class="chip-help" id="chip-help" hidden>¿No sabe qué chip tiene su Mac? Menú  → Acerca de esta Mac. Si dice «Chip Apple M1, M2, M3…» use la versión con chip Apple; si dice «Procesador Intel», la versión Intel.</p>
-  </section>
-
-  <section class="others" aria-labelledby="oth">
-    <h3 id="oth">Todas las versiones</h3>
-    <a class="btn" id="dl-win" target="_blank" rel="noopener">Windows 10 y 11 <small>45 MB</small></a>
-    <a class="btn" id="dl-arm" target="_blank" rel="noopener">Mac con chip Apple (M1, M2, M3, M4) <small>35 MB</small></a>
-    <a class="btn" id="dl-intel" target="_blank" rel="noopener">Mac con procesador Intel <small>39 MB</small></a>
-  </section>
-
-  <section class="steps" aria-labelledby="how">
-    <h3 id="how">Cómo abrirlo la primera vez</h3>
-    <div class="tabs" role="tablist">
-      <button class="tab" role="tab" id="t-win" aria-selected="true" aria-controls="p-win">Windows</button>
-      <button class="tab" role="tab" id="t-mac" aria-selected="false" aria-controls="p-mac">Mac</button>
+<nav class="nav" aria-label="Principal">
+  <div class="container">
+    <a class="brand" href="#top"><svg aria-hidden="true"><use href="#logo"/></svg>Complex Education</a>
+    <div class="nav-links">
+      <a href="#beneficios">Beneficios</a>
+      <a href="#clase">La clase</a>
+      <a href="#modulos">Módulos</a>
+      <a href="#preguntas">Preguntas</a>
     </div>
-    <div id="p-win" role="tabpanel" aria-labelledby="t-win">
-      <ol>
-        <li>Abra el archivo descargado <code>.zip</code> y saque <code>Complex_Education.exe</code> a su Escritorio.</li>
-        <li>Haga doble clic. Si Windows muestra «Windows protegió su PC», toque <strong>Más información</strong> y luego <strong>Ejecutar de todas formas</strong>.</li>
-        <li>Escriba su usuario y su contraseña. La primera vez necesita internet; después funciona sin conexión.</li>
-      </ol>
+    <a class="btn btn-primary" href="#descargar">Descargar</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="container hero-grid">
+    <div>
+      <span class="pill"><b>1.0</b> Ya disponible para Windows y Mac</span>
+      <h1>Matemáticas que se <span>ven</span> y se <span>mueven</span></h1>
+      <p class="lead">Simulaciones 3D, ecuaciones claras y clases listas para proyectar. Un programa hecho para el aula que funciona en el computador de cada docente, con o sin internet.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" id="hero-dl" href="#descargar"><svg><use href="#i-down"/></svg><span id="hero-dl-label">Descargar gratis</span></a>
+        <a class="btn btn-ghost" href="#beneficios">Ver qué ofrece</a>
+      </div>
+      <p class="hero-note">Para docentes del colegio · Entra con el usuario que le da el administrador</p>
     </div>
-    <div id="p-mac" role="tabpanel" aria-labelledby="t-mac" hidden>
-      <ol>
-        <li>Abra el <code>.zip</code> descargado y arrastre <strong>Complex Education</strong> a la carpeta Aplicaciones.</li>
-        <li>La primera vez, haga clic derecho sobre la app y elija <strong>Abrir</strong>, y luego otra vez <strong>Abrir</strong>. Si macOS no lo permite: Ajustes del Sistema → Privacidad y seguridad → <strong>Abrir igualmente</strong>.</li>
-        <li>Escriba su usuario y su contraseña. La primera vez necesita internet; después funciona sin conexión.</li>
-      </ol>
-    </div>
-    <p class="note">Cuando haya una versión nueva, el programa la descarga solo mientras lo usa y le pregunta si desea instalarla. No necesita volver a esta página.</p>
-  </section>
+    <div class="hero-shot"><img src="img/cargo.jpg" alt="Simulación 3D de un avión de carga volando sobre campos y montañas, con la misión «Heavy cargo»" width="1280" height="720" fetchpriority="high"></div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="container">
+    <div><b>3 fases</b><span>por cada clase</span></div>
+    <div><b>8 grados</b><span>organizados por tema</span></div>
+    <div><b>14 días</b><span>de uso sin internet</span></div>
+    <div><b>2 sistemas</b><span>Windows y Mac</span></div>
+  </div>
 </div>
+
+<section id="beneficios">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Beneficios</span>
+      <h2>Todo lo que una clase de matemáticas necesita</h2>
+      <p>Pensado con docentes: menos tiempo preparando, más tiempo enseñando y estudiantes que entienden lo que ven.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 7.5 12 12l9-4.5z"/><path d="M3 7.5V16.5L12 21l9-4.5V7.5"/><path d="M12 12v9"/></svg></span>
+        <h3>Simulaciones en 3D</h3>
+        <p>Aviones, tanques y objetos reales para ver la matemática en acción. La cámara gira alrededor de cada objeto para mirarlo desde cualquier ángulo.</p>
+      </article>
+      <article class="card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h7M4 6l4 6-4 6h7"/><path d="M15 9h5M15 15h5M17.5 6.5v5"/></svg></span>
+        <h3>Ecuaciones como en el libro</h3>
+        <p>Fracciones, raíces y fórmulas escritas con calidad de texto escolar, grandes y legibles desde el fondo del salón.</p>
+      </article>
+      <article class="card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></span>
+        <h3>Clase en tres fases</h3>
+        <p>El docente explica, los estudiantes practican y luego pasan al tablero en grupos con un reloj sonoro. La clase completa, ya organizada.</p>
+      </article>
+      <article class="card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5a15 15 0 0 1 20 0M5.5 12a10 10 0 0 1 13 0M9 15.5a5 5 0 0 1 6 0"/><path d="M3 3l18 18"/></svg></span>
+        <h3>Funciona sin internet</h3>
+        <p>Solo necesita conexión la primera vez que entra. Después trabaja hasta 14 días sin internet, ideal para salones con mala señal.</p>
+      </article>
+      <article class="card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
+        <h3>Corre en equipos sencillos</h3>
+        <p>Usa el hardware del propio computador y ajusta la calidad gráfica sola, así funciona bien también en portátiles modestos.</p>
+      </article>
+      <article class="card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4"/></svg></span>
+        <h3>Se actualiza solo</h3>
+        <p>Las versiones nuevas se descargan mientras usted trabaja, sin interrumpir. Cuando están listas, el programa le pregunta si desea instalarlas.</p>
+      </article>
+      <article class="card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+        <h3>Cuentas del colegio</h3>
+        <p>Cada docente entra con su propio usuario y contraseña. El administrador crea, desactiva o cambia cuentas desde el mismo programa.</p>
+      </article>
+      <article class="card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></span>
+        <h3>Datos y gráficas interactivas</h3>
+        <p>Diagramas de tallo y hoja, balanzas para la media y gráficos de puntos que los estudiantes mueven y construyen ellos mismos.</p>
+      </article>
+      <article class="card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V16h8v-1.3A7 7 0 0 0 12 2z"/></svg></span>
+        <h3>Pistas y soluciones paso a paso</h3>
+        <p>Cada ejercicio tiene pistas opcionales y una solución explicada que el docente muestra cuando el grupo termina.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="ver">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Así se ve</span>
+      <h2>Diseñado para proyectar en el salón</h2>
+      <p>Pantallas limpias, letra grande y controles simples. Los paneles de cálculos se pueden esconder o mostrar cuando el docente quiera.</p>
+    </div>
+
+    <div class="row">
+      <div class="media"><img src="img/tank.jpg" alt="Tanque 3D en un campo abierto con casas y árboles" loading="lazy" width="1280" height="720"></div>
+      <div class="copy">
+        <span class="eyebrow">Mundos 3D</span>
+        <h3>El álgebra y la aritmética toman forma</h3>
+        <p>Los estudiantes calculan, predicen y comprueban el resultado viendo la simulación. Modelos 3D cuidados, sombras, cielo y paisaje.</p>
+        <ul class="ticks">
+          <li>Cámara que orbita alrededor del objeto</li>
+          <li>Calidad gráfica Alta, Media o Baja según el equipo</li>
+          <li>Sonidos que se pueden apagar en un clic</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row flip">
+      <div class="media"><img src="img/balance.jpg" alt="Actividad «Balance it»: puntos sobre una balanza que se equilibra en la media" loading="lazy" width="1280" height="720"></div>
+      <div class="copy">
+        <span class="eyebrow">Aprender haciendo</span>
+        <h3>Conceptos que se descubren, no solo se memorizan</h3>
+        <p>En la balanza, la media es el punto donde la barra queda nivelada. Los estudiantes mueven los datos y ven al instante cómo cambian la media y la mediana.</p>
+        <ul class="ticks">
+          <li>Retos con verificación automática</li>
+          <li>Retroalimentación inmediata en cada intento</li>
+          <li>Progreso guardado por actividad</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="media"><img src="img/spread.jpg" alt="Gráfico de puntos comparando la consistencia de dos arqueros" loading="lazy" width="1280" height="720"></div>
+      <div class="copy">
+        <span class="eyebrow">Situaciones reales</span>
+        <h3>Problemas con sentido para los estudiantes</h3>
+        <p>Arqueros, tiros libres, temperaturas de ciudades, vuelos de aviones de papel. Cada tema parte de una situación que los estudiantes reconocen.</p>
+        <ul class="ticks">
+          <li>Datos originales, distintos en cada ejercicio</li>
+          <li>Del nivel fácil al difícil</li>
+          <li>En inglés, para reforzar el bilingüismo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="clase">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">La clase</span>
+      <h2>Cada módulo es una clase completa</h2>
+      <p>La misma estructura en todos los temas, para que docentes y estudiantes sepan siempre qué sigue.</p>
+    </div>
+    <div class="phases">
+      <article class="phase">
+        <img src="img/lesson.jpg" alt="Diapositiva de la lección sobre la mediana con definición y pasos" loading="lazy" width="1280" height="720">
+        <div><span class="num">Fase 1</span><h3>El docente explica</h3>
+        <p>Diapositivas de lo fácil a lo difícil, con definiciones destacadas y ejemplos paso a paso.</p></div>
+      </article>
+      <article class="phase">
+        <img src="img/balance.jpg" alt="Actividad de práctica con la balanza de la media" loading="lazy" width="1280" height="720">
+        <div><span class="num">Fase 2</span><h3>Los estudiantes practican</h3>
+        <p>Actividades interactivas con pistas opcionales y verificación inmediata.</p></div>
+      </article>
+      <article class="phase">
+        <img src="img/board.jpg" alt="Fase al tablero con reloj de 3 minutos y ejercicio para el grupo 1" loading="lazy" width="1280" height="720">
+        <div><span class="num">Fase 3</span><h3>Al tablero</h3>
+        <p>Grupos de 5 pasan al tablero con un reloj de 3 minutos que suena y acelera al final.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="modulos">
+  <div class="container">
+    <div class="row flip">
+      <div class="media"><img src="img/menu.jpg" alt="Menú principal con las tarjetas de los grados 1° a 8°" loading="lazy" width="1280" height="720"></div>
+      <div class="copy">
+        <span class="eyebrow">Módulos</span>
+        <h3>Organizado por grados, de 1° a 8°</h3>
+        <p>Elija el grado, luego el tema. Cada nuevo módulo llega a todos los docentes con las actualizaciones automáticas.</p>
+      </div>
+    </div>
+    <div class="mods" style="margin-top:40px">
+      <article class="mod"><span class="tag">Aritmética · 3D</span><h3>Cargo</h3><p>Misiones de un avión de carga para operar con distancias y pesos.</p></article>
+      <article class="mod"><span class="tag">Álgebra · 3D</span><h3>Tank</h3><p>Conducir hacia los objetivos usando coordenadas y ecuaciones.</p></article>
+      <article class="mod"><span class="tag">Álgebra</span><h3>The Unknown Line</h3><p>Máquinas que esconden una regla: predecir, comparar y descubrirla.</p></article>
+      <article class="mod"><span class="tag">7° · Estadística</span><h3>Stem &amp; Leaf</h3><p>Diagramas de tallo y hoja: ordenar datos, moda, mediana y rango.</p></article>
+      <article class="mod"><span class="tag">7° · Estadística</span><h3>Mean, Median &amp; Mode</h3><p>Medidas de tendencia central con balanzas y datos que se mueven.</p></article>
+      <article class="mod"><span class="tag">8° · Estadística</span><h3>Spread</h3><p>Rango, cuartiles, diagramas de caja, datos atípicos y desviación.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="dl" id="descargar">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Descargar</span>
+      <h2>Instálelo en su computador</h2>
+      <p>Gratis para los docentes del colegio. Para entrar use el usuario y la contraseña que le entregó el administrador.</p>
+    </div>
+    <div class="dl-box">
+      <div class="rec">
+        <p class="detected" id="detected">Elija la versión de su computador.</p>
+        <a class="btn btn-primary" id="primary" href="#" rel="noopener"><svg><use href="#i-down"/></svg><span id="primary-label">Descargar</span> <small id="primary-size"></small></a>
+        <p class="chip-help" id="chip-help" hidden>¿No sabe qué chip tiene su Mac? Menú  → Acerca de esta Mac. Si dice «Chip Apple M1, M2, M3…» use la versión con chip Apple; si dice «Procesador Intel», la versión Intel.</p>
+      </div>
+      <div class="oses">
+        <a class="os" id="dl-win" rel="noopener"><b>Windows</b><span>Windows 10 y 11 · <span class="sz">45 MB</span></span></a>
+        <a class="os" id="dl-arm" rel="noopener"><b>Mac con chip Apple</b><span>M1, M2, M3, M4 · <span class="sz">35 MB</span></span></a>
+        <a class="os" id="dl-intel" rel="noopener"><b>Mac con Intel</b><span>Procesador Intel · <span class="sz">39 MB</span></span></a>
+      </div>
+      <div class="steps">
+        <h3>Cómo abrirlo la primera vez</h3>
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" id="t-win" aria-selected="true" aria-controls="p-win">Windows</button>
+          <button class="tab" role="tab" id="t-mac" aria-selected="false" aria-controls="p-mac">Mac</button>
+        </div>
+        <div id="p-win" role="tabpanel" aria-labelledby="t-win">
+          <ol>
+            <li>Abra el archivo <code>.zip</code> descargado y saque <code>Complex_Education.exe</code> a su Escritorio.</li>
+            <li>Haga doble clic. Si Windows muestra «Windows protegió su PC», toque <strong>Más información</strong> y luego <strong>Ejecutar de todas formas</strong>.</li>
+            <li>Escriba su usuario y su contraseña. La primera vez necesita internet; después funciona sin conexión.</li>
+          </ol>
+        </div>
+        <div id="p-mac" role="tabpanel" aria-labelledby="t-mac" hidden>
+          <ol>
+            <li>Abra el <code>.zip</code> descargado y arrastre <strong>Complex Education</strong> a la carpeta Aplicaciones.</li>
+            <li>La primera vez, haga clic derecho sobre la app y elija <strong>Abrir</strong>, y luego otra vez <strong>Abrir</strong>. Si macOS no lo permite: Ajustes del Sistema → Privacidad y seguridad → <strong>Abrir igualmente</strong>.</li>
+            <li>Escriba su usuario y su contraseña. La primera vez necesita internet; después funciona sin conexión.</li>
+          </ol>
+        </div>
+        <p class="note">Cuando haya una versión nueva, el programa la descarga solo mientras lo usa y le pregunta si desea instalarla. No necesita volver a esta página.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="preguntas">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Lo que suelen preguntar los docentes</h2>
+    </div>
+    <div class="faq">
+      <details><summary>¿Cómo obtengo mi usuario y contraseña?</summary>
+        <p>Los entrega el administrador del programa en el colegio. Si olvidó su contraseña, pídale que le asigne una nueva; él lo puede hacer desde el mismo programa.</p></details>
+      <details><summary>¿Necesito internet en el salón?</summary>
+        <p>Solo la primera vez que entra con su usuario. Después el programa funciona sin conexión hasta 14 días; cuando vuelva a tener internet se renueva solo.</p></details>
+      <details><summary>¿Funciona en un computador antiguo?</summary>
+        <p>Sí. El programa usa el hardware de su equipo y ajusta la calidad gráfica automáticamente. En las escenas 3D también puede elegir la calidad Baja manualmente.</p></details>
+      <details><summary>¿Cómo recibo los módulos nuevos?</summary>
+        <p>Automáticamente. Cuando hay una versión nueva, se descarga mientras usa el programa y al terminar le pregunta si desea instalarla. Si elige «Más tarde», se lo vuelve a preguntar la próxima vez.</p></details>
+      <details><summary>Windows o Mac me advierten que la app no es conocida. ¿Es seguro?</summary>
+        <p>Sí. Es el aviso normal para programas que no vienen de una tienda de aplicaciones. Siga los pasos de «Cómo abrirlo la primera vez» y solo tendrá que hacerlo una vez.</p></details>
+      <details><summary>¿Puedo usarlo con el videobeam o el televisor?</summary>
+        <p>Sí, está pensado para proyectarse: letra grande, alto contraste y paneles que se pueden esconder para dejar más espacio a la simulación.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <a class="brand" href="#top"><svg aria-hidden="true"><use href="#logo"/></svg>Complex Education</a>
+    <span>Matemáticas interactivas para el aula · Versión 1.0.0</span>
+    <a href="#descargar">Descargar</a>
+  </div>
+</footer>
 
 <script>
 const BASE = "https://dqjaqavudeapmnzrmyzi.supabase.co/storage/v1/object/public/releases/";
 const FILES = {
-  win:   { file: "Complex_Education_1.0.0_Windows.zip",    label: "Descargar para Windows",                size: "45 MB" },
-  arm:   { file: "Complex_Education_1.0.0_Mac_arm64.zip",  label: "Descargar para Mac con chip Apple",     size: "35 MB" },
-  intel: { file: "Complex_Education_1.0.0_Mac_x86_64.zip", label: "Descargar para Mac con procesador Intel", size: "39 MB" },
+  win:   { file: "Complex_Education_1.0.0_Windows.zip",    label: "Descargar para Windows",            size: "45 MB" },
+  arm:   { file: "Complex_Education_1.0.0_Mac_arm64.zip",  label: "Descargar para Mac con chip Apple", size: "35 MB" },
+  intel: { file: "Complex_Education_1.0.0_Mac_x86_64.zip", label: "Descargar para Mac con Intel",      size: "39 MB" },
 };
 const url = k => BASE + FILES[k].file + "?download";
 document.getElementById("dl-win").href = url("win");
@@ -116,7 +476,7 @@ document.getElementById("dl-arm").href = url("arm");
 document.getElementById("dl-intel").href = url("intel");
 
 function macChip() {
-  // Apple chips show "Apple M…" as the graphics renderer; Intel Macs show Intel/AMD.
+  // Apple chips report "Apple M…" as the graphics renderer; Intel Macs report Intel/AMD.
   try {
     const gl = document.createElement("canvas").getContext("webgl");
     const ext = gl && gl.getExtension("WEBGL_debug_renderer_info");
@@ -127,25 +487,6 @@ function macChip() {
   return "";
 }
 
-const ua = navigator.userAgent || "";
-let pick = "win", text = "Parece que usa Windows.";
-if (/Macintosh|Mac OS X/i.test(ua)) {
-  const chip = macChip();
-  pick = chip || "arm";
-  text = chip === "intel" ? "Parece que usa un Mac con procesador Intel."
-       : chip === "arm" ? "Parece que usa un Mac con chip Apple."
-       : "Parece que usa un Mac. Revise qué chip tiene antes de descargar.";
-  document.getElementById("chip-help").hidden = false;
-  showTab("mac");
-} else if (!/Windows/i.test(ua)) {
-  text = "El programa es para computadores con Windows o Mac. Elija la versión de su computador.";
-}
-document.getElementById("detected").textContent = text;
-const p = document.getElementById("primary");
-p.href = url(pick);
-p.firstChild.textContent = FILES[pick].label + " ";
-document.getElementById("primary-size").textContent = FILES[pick].size;
-
 function showTab(k) {
   for (const t of ["win", "mac"]) {
     document.getElementById("t-" + t).setAttribute("aria-selected", String(t === k));
@@ -154,7 +495,26 @@ function showTab(k) {
 }
 document.getElementById("t-win").addEventListener("click", () => showTab("win"));
 document.getElementById("t-mac").addEventListener("click", () => showTab("mac"));
-</script>
 
+const ua = navigator.userAgent || "";
+let pick = "win", text = "Parece que usa Windows.", known = /Windows/i.test(ua);
+if (/Macintosh|Mac OS X/i.test(ua)) {
+  const chip = macChip();
+  pick = chip || "arm"; known = true;
+  text = chip === "intel" ? "Parece que usa un Mac con procesador Intel."
+       : chip === "arm" ? "Parece que usa un Mac con chip Apple."
+       : "Parece que usa un Mac. Revise qué chip tiene antes de descargar.";
+  document.getElementById("chip-help").hidden = false;
+  showTab("mac");
+} else if (!known) {
+  text = "El programa es para computadores con Windows o Mac. Elija la versión de su computador.";
+}
+document.getElementById("detected").textContent = text;
+const p = document.getElementById("primary");
+p.href = url(pick);
+document.getElementById("primary-label").textContent = FILES[pick].label;
+document.getElementById("primary-size").textContent = FILES[pick].size;
+if (known) document.getElementById("hero-dl-label").textContent = pick === "win" ? "Descargar para Windows" : "Descargar para Mac";
+</script>
 </body>
 </html>

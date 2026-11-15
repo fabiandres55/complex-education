@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Descarga Complex Education para Windows o Mac.">
+<title>Descargar Complex Education</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+body{margin:0}
+
+/* Layout: one column, a recommended download on top, the other systems below, then three steps. */
+:root {
+  --bg: #f3f6fb; --surface: #ffffff; --ink: #18233a; --muted: #5a6680; --line: #dbe2ee;
+  --accent: #2756a3; --accent-ink: #ffffff; --soft: #e6eefb; --ok: #1f7a4d;
+  --display: "Lexend", "Segoe UI", system-ui, sans-serif;
+  --body: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121a2b; --surface: #1a2438; --ink: #e8eef8; --muted: #a3b0c8; --line: #2c3954;
+  --accent: #7fa6ea; --accent-ink: #0e1626; --soft: #22314d; --ok: #5cc493; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121a2b; --surface: #1a2438; --ink: #e8eef8; --muted: #a3b0c8; --line: #2c3954;
+  --accent: #7fa6ea; --accent-ink: #0e1626; --soft: #22314d; --ok: #5cc493; color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--ink); font: 16px/1.55 var(--body); }
+.wrap { max-width: 760px; margin: 0 auto; padding-block: 40px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 28px }
+header { display: grid; gap: 8px }
+.eyebrow { font: 600 13px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted) }
+h1 { font: 700 clamp(30px, 6vw, 42px)/1.1 var(--display); margin: 0; text-wrap: balance }
+.lead { color: var(--muted); margin: 0; max-width: 60ch }
+.main { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; display: grid; gap: 14px }
+.main h2 { font: 700 20px/1.25 var(--display); margin: 0 }
+.detected { font-size: 14px; color: var(--muted); margin: 0 }
+.btn { display: flex; align-items: center; justify-content: space-between; gap: 12px; text-decoration: none;
+  border-radius: 10px; padding: 16px 18px; font-weight: 600; border: 1px solid var(--line); color: var(--ink); background: var(--surface) }
+.btn small { font-weight: 500; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent) }
+.btn.primary small { color: var(--accent-ink); opacity: .85 }
+.btn:hover { filter: brightness(1.04) }
+.btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px }
+.others { display: grid; gap: 10px }
+.others h3, .steps h3 { font: 600 15px/1.3 var(--body); margin: 0; color: var(--muted) }
+.steps { display: grid; gap: 12px }
+ol { margin: 0; padding-left: 22px; display: grid; gap: 8px }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap }
+.tab { font: 600 14px var(--body); padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer }
+.tab[aria-selected="true"] { background: var(--soft); border-color: var(--accent); color: var(--ink) }
+.note { font-size: 14px; color: var(--muted); border-left: 3px solid var(--line); padding-left: 12px; margin: 0 }
+.chip-help { font-size: 14px; color: var(--muted); margin: 0 }
+code { font-size: 14px; background: var(--soft); padding: 1px 6px; border-radius: 6px }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important } }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Para docentes del colegio</span>
+    <h1>Descargar Complex Education</h1>
+    <p class="lead">El programa de matemáticas se instala en su computador y funciona con su propio equipo. Para entrar use el usuario y la contraseña que le entregó el administrador.</p>
+  </header>
+
+  <section class="main" aria-labelledby="rec">
+    <h2 id="rec">Descarga recomendada</h2>
+    <p class="detected" id="detected">Elija su sistema.</p>
+    <a class="btn primary" id="primary" href="#" target="_blank" rel="noopener">Descargar <small id="primary-size"></small></a>
+    <p class="chip-help" id="chip-help" hidden>¿No sabe qué chip tiene su Mac? Menú  → Acerca de esta Mac. Si dice «Chip Apple M1, M2, M3…» use la versión con chip Apple; si dice «Procesador Intel», la versión Intel.</p>
+  </section>
+
+  <section class="others" aria-labelledby="oth">
+    <h3 id="oth">Todas las versiones</h3>
+    <a class="btn" id="dl-win" target="_blank" rel="noopener">Windows 10 y 11 <small>45 MB</small></a>
+    <a class="btn" id="dl-arm" target="_blank" rel="noopener">Mac con chip Apple (M1, M2, M3, M4) <small>35 MB</small></a>
+    <a class="btn" id="dl-intel" target="_blank" rel="noopener">Mac con procesador Intel <small>39 MB</small></a>
+  </section>
+
+  <section class="steps" aria-labelledby="how">
+    <h3 id="how">Cómo abrirlo la primera vez</h3>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="t-win" aria-selected="true" aria-controls="p-win">Windows</button>
+      <button class="tab" role="tab" id="t-mac" aria-selected="false" aria-controls="p-mac">Mac</button>
+    </div>
+    <div id="p-win" role="tabpanel" aria-labelledby="t-win">
+      <ol>
+        <li>Abra el archivo descargado <code>.zip</code> y saque <code>Complex_Education.exe</code> a su Escritorio.</li>
+        <li>Haga doble clic. Si Windows muestra «Windows protegió su PC», toque <strong>Más información</strong> y luego <strong>Ejecutar de todas formas</strong>.</li>
+        <li>Escriba su usuario y su contraseña. La primera vez necesita internet; después funciona sin conexión.</li>
+      </ol>
+    </div>
+    <div id="p-mac" role="tabpanel" aria-labelledby="t-mac" hidden>
+      <ol>
+        <li>Abra el <code>.zip</code> descargado y arrastre <strong>Complex Education</strong> a la carpeta Aplicaciones.</li>
+        <li>La primera vez, haga clic derecho sobre la app y elija <strong>Abrir</strong>, y luego otra vez <strong>Abrir</strong>. Si macOS no lo permite: Ajustes del Sistema → Privacidad y seguridad → <strong>Abrir igualmente</strong>.</li>
+        <li>Escriba su usuario y su contraseña. La primera vez necesita internet; después funciona sin conexión.</li>
+      </ol>
+    </div>
+    <p class="note">Cuando haya una versión nueva, el programa la descarga solo mientras lo usa y le pregunta si desea instalarla. No necesita volver a esta página.</p>
+  </section>
+</div>
+
+<script>
+const BASE = "https://dqjaqavudeapmnzrmyzi.supabase.co/storage/v1/object/public/releases/";
+const FILES = {
+  win:   { file: "Complex_Education_1.0.0_Windows.zip",    label: "Descargar para Windows",                size: "45 MB" },
+  arm:   { file: "Complex_Education_1.0.0_Mac_arm64.zip",  label: "Descargar para Mac con chip Apple",     size: "35 MB" },
+  intel: { file: "Complex_Education_1.0.0_Mac_x86_64.zip", label: "Descargar para Mac con procesador Intel", size: "39 MB" },
+};
+const url = k => BASE + FILES[k].file + "?download";
+document.getElementById("dl-win").href = url("win");
+document.getElementById("dl-arm").href = url("arm");
+document.getElementById("dl-intel").href = url("intel");
+
+function macChip() {
+  // Apple chips show "Apple M…" as the graphics renderer; Intel Macs show Intel/AMD.
+  try {
+    const gl = document.createElement("canvas").getContext("webgl");
+    const ext = gl && gl.getExtension("WEBGL_debug_renderer_info");
+    const r = ext ? String(gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)) : "";
+    if (/apple m\d|apple gpu/i.test(r)) return "arm";
+    if (/intel|amd|radeon/i.test(r)) return "intel";
+  } catch (e) {}
+  return "";
+}
+
+const ua = navigator.userAgent || "";
+let pick = "win", text = "Parece que usa Windows.";
+if (/Macintosh|Mac OS X/i.test(ua)) {
+  const chip = macChip();
+  pick = chip || "arm";
+  text = chip === "intel" ? "Parece que usa un Mac con procesador Intel."
+       : chip === "arm" ? "Parece que usa un Mac con chip Apple."
+       : "Parece que usa un Mac. Revise qué chip tiene antes de descargar.";
+  document.getElementById("chip-help").hidden = false;
+  showTab("mac");
+} else if (!/Windows/i.test(ua)) {
+  text = "El programa es para computadores con Windows o Mac. Elija la versión de su computador.";
+}
+document.getElementById("detected").textContent = text;
+const p = document.getElementById("primary");
+p.href = url(pick);
+p.firstChild.textContent = FILES[pick].label + " ";
+document.getElementById("primary-size").textContent = FILES[pick].size;
+
+function showTab(k) {
+  for (const t of ["win", "mac"]) {
+    document.getElementById("t-" + t).setAttribute("aria-selected", String(t === k));
+    document.getElementById("p-" + t).hidden = t !== k;
+  }
+}
+document.getElementById("t-win").addEventListener("click", () => showTab("win"));
+document.getElementById("t-mac").addEventListener("click", () => showTab("mac"));
+</script>
+
+</body>
+</html>

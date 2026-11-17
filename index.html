@@ -458,7 +458,7 @@ footer a { color: var(--hero-ink) }
 <footer>
   <div class="container">
     <a class="brand" href="#top"><svg aria-hidden="true"><use href="#logo"/></svg>Complex Education</a>
-    <span>Matemáticas interactivas para el aula · Versión 1.0.2</span>
+    <span>Matemáticas interactivas para el aula · Versión 1.0.3</span>
     <a href="#descargar">Descargar</a>
   </div>
 </footer>
@@ -466,9 +466,9 @@ footer a { color: var(--hero-ink) }
 <script>
 const BASE = "https://dqjaqavudeapmnzrmyzi.supabase.co/storage/v1/object/public/releases/";
 const FILES = {
-  win:   { file: "Complex_Education_1.0.2_Windows.zip",    label: "Descargar para Windows",            size: "49 MB" },
-  arm:   { file: "Complex_Education_1.0.2_Mac_arm64.zip",  label: "Descargar para Mac con chip Apple", size: "39 MB" },
-  intel: { file: "Complex_Education_1.0.2_Mac_x86_64.zip", label: "Descargar para Mac con Intel",      size: "42 MB" },
+  win:   { file: "Complex_Education_1.0.3_Windows.zip",    label: "Descargar para Windows",            size: "49 MB" },
+  arm:   { file: "Complex_Education_1.0.3_Mac_arm64.zip",  label: "Descargar para Mac con chip Apple", size: "39 MB" },
+  intel: { file: "Complex_Education_1.0.3_Mac_x86_64.zip", label: "Descargar para Mac con Intel",      size: "43 MB" },
 };
 const url = k => BASE + FILES[k].file + "?download";
 document.getElementById("dl-win").href = url("win");

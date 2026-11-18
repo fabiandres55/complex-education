@@ -458,22 +458,49 @@ footer a { color: var(--hero-ink) }
 <footer>
   <div class="container">
     <a class="brand" href="#top"><svg aria-hidden="true"><use href="#logo"/></svg>Complex Education</a>
-    <span>Matemáticas interactivas para el aula · Versión 1.0.4</span>
+    <span>Matemáticas interactivas para el aula · Versión <span id="app-version">1.0.4</span></span>
     <a href="#descargar">Descargar</a>
   </div>
 </footer>
 
 <script>
 const BASE = "https://dqjaqavudeapmnzrmyzi.supabase.co/storage/v1/object/public/releases/";
+// The version on show is the REAL one: the same latest.json the installed programs read to update.
+// "1.0.4" is only used if the server can't be reached.
+let VERSION = "1.0.4";
+const KIND = { win: "Windows", arm: "Mac_arm64", intel: "Mac_x86_64" };
 const FILES = {
-  win:   { file: "Complex_Education_1.0.4_Windows.zip",    label: "Descargar para Windows",            size: "49 MB" },
-  arm:   { file: "Complex_Education_1.0.4_Mac_arm64.zip",  label: "Descargar para Mac con chip Apple", size: "39 MB" },
-  intel: { file: "Complex_Education_1.0.4_Mac_x86_64.zip", label: "Descargar para Mac con Intel",      size: "43 MB" },
+  win:   { label: "Descargar para Windows",            size: "49 MB" },
+  arm:   { label: "Descargar para Mac con chip Apple", size: "39 MB" },
+  intel: { label: "Descargar para Mac con Intel",      size: "43 MB" },
 };
-const url = k => BASE + FILES[k].file + "?download";
-document.getElementById("dl-win").href = url("win");
-document.getElementById("dl-arm").href = url("arm");
-document.getElementById("dl-intel").href = url("intel");
+const fileOf = k => "Complex_Education_" + VERSION + "_" + KIND[k] + ".zip";
+const url = k => BASE + fileOf(k) + "?download";
+let pick = "win";
+function paintDownloads() {
+  document.getElementById("app-version").textContent = VERSION;
+  document.getElementById("dl-win").href = url("win");
+  document.getElementById("dl-arm").href = url("arm");
+  document.getElementById("dl-intel").href = url("intel");
+  document.getElementById("primary").href = url(pick);
+  document.getElementById("primary-size").textContent = FILES[pick].size;
+}
+async function loadVersion() {
+  try {
+    const r = await fetch(BASE + "latest.json?t=" + Date.now(), { cache: "no-store" });
+    const j = await r.json();
+    if (j && /^\d+(\.\d+)+$/.test(String(j.version))) VERSION = String(j.version);
+  } catch (e) {}
+  paintDownloads();
+  // the real size of each download (the files of that version, on the server)
+  for (const k of Object.keys(KIND)) {
+    try {
+      const h = await fetch(BASE + fileOf(k), { method: "HEAD", cache: "no-store" });
+      const n = Number(h.headers.get("content-length"));
+      if (h.ok && n > 0) { FILES[k].size = Math.round(n / 1e6) + " MB"; if (k === pick) paintDownloads(); }
+    } catch (e) {}
+  }
+}
 
 function macChip() {
   // Apple chips report "Apple M…" as the graphics renderer; Intel Macs report Intel/AMD.
@@ -497,7 +524,7 @@ document.getElementById("t-win").addEventListener("click", () => showTab("win"))
 document.getElementById("t-mac").addEventListener("click", () => showTab("mac"));
 
 const ua = navigator.userAgent || "";
-let pick = "win", text = "Parece que usa Windows.", known = /Windows/i.test(ua);
+let text = "Parece que usa Windows.", known = /Windows/i.test(ua);
 if (/Macintosh|Mac OS X/i.test(ua)) {
   const chip = macChip();
   pick = chip || "arm"; known = true;
@@ -510,10 +537,9 @@ if (/Macintosh|Mac OS X/i.test(ua)) {
   text = "El programa es para computadores con Windows o Mac. Elija la versión de su computador.";
 }
 document.getElementById("detected").textContent = text;
-const p = document.getElementById("primary");
-p.href = url(pick);
 document.getElementById("primary-label").textContent = FILES[pick].label;
-document.getElementById("primary-size").textContent = FILES[pick].size;
+paintDownloads();
+loadVersion();
 if (known) document.getElementById("hero-dl-label").textContent = pick === "win" ? "Descargar para Windows" : "Descargar para Mac";
 </script>
 </body>

@@ -209,7 +209,7 @@ footer a { color: var(--hero-ink) }
 <header class="hero" id="top">
   <div class="container hero-grid">
     <div>
-      <span class="pill"><b>1.0</b> Ya disponible para Windows y Mac</span>
+      <span class="pill"><b id="pill-version">1.0.4</b> Ya disponible para Windows y Mac</span>
       <h1>Matemáticas que se <span>ven</span> y se <span>mueven</span></h1>
       <p class="lead">Simulaciones 3D, ecuaciones claras y clases listas para proyectar. Un programa hecho para el aula que funciona en el computador de cada docente, con o sin internet.</p>
       <div class="hero-cta">
@@ -479,6 +479,7 @@ const url = k => BASE + fileOf(k) + "?download";
 let pick = "win";
 function paintDownloads() {
   document.getElementById("app-version").textContent = VERSION;
+  document.getElementById("pill-version").textContent = VERSION;
   document.getElementById("dl-win").href = url("win");
   document.getElementById("dl-arm").href = url("arm");
   document.getElementById("dl-intel").href = url("intel");

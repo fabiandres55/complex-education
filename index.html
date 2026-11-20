@@ -209,7 +209,7 @@ footer a { color: var(--hero-ink) }
 <header class="hero" id="top">
   <div class="container hero-grid">
     <div>
-      <span class="pill"><b id="pill-version">1.0.4</b> Ya disponible para Windows y Mac</span>
+      <span class="pill"><b id="pill-version">1.0.5</b> Ya disponible para Windows y Mac</span>
       <h1>Matemáticas que se <span>ven</span> y se <span>mueven</span></h1>
       <p class="lead">Simulaciones 3D, ecuaciones claras y clases listas para proyectar. Un programa hecho para el aula que funciona en el computador de cada docente, con o sin internet.</p>
       <div class="hero-cta">
@@ -225,7 +225,7 @@ footer a { color: var(--hero-ink) }
 <div class="strip">
   <div class="container">
     <div><b>3 fases</b><span>por cada clase</span></div>
-    <div><b>8 grados</b><span>organizados por tema</span></div>
+    <div><b>11 grados</b><span>organizados por tema</span></div>
     <div><b>14 días</b><span>de uso sin internet</span></div>
     <div><b>2 sistemas</b><span>Windows y Mac</span></div>
   </div>
@@ -370,10 +370,10 @@ footer a { color: var(--hero-ink) }
 <section class="alt" id="modulos">
   <div class="container">
     <div class="row flip">
-      <div class="media"><img src="img/menu.jpg" alt="Menú principal con las tarjetas de los grados 1° a 8°" loading="lazy" width="1280" height="720"></div>
+      <div class="media"><img src="img/menu.jpg" alt="Menú principal con las tarjetas de los grados" loading="lazy" width="1280" height="720"></div>
       <div class="copy">
         <span class="eyebrow">Módulos</span>
-        <h3>Organizado por grados, de 1° a 8°</h3>
+        <h3>Organizado por grados, de 1° a 11°</h3>
         <p>Elija el grado, luego el tema. Cada nuevo módulo llega a todos los docentes con las actualizaciones automáticas.</p>
       </div>
     </div>
@@ -402,9 +402,9 @@ footer a { color: var(--hero-ink) }
         <p class="chip-help" id="chip-help" hidden>¿No sabe qué chip tiene su Mac? Menú  → Acerca de esta Mac. Si dice «Chip Apple M1, M2, M3…» use la versión con chip Apple; si dice «Procesador Intel», la versión Intel.</p>
       </div>
       <div class="oses">
-        <a class="os" id="dl-win" rel="noopener"><b>Windows</b><span>Windows 10 y 11 · <span class="sz">46 MB</span></span></a>
-        <a class="os" id="dl-arm" rel="noopener"><b>Mac con chip Apple</b><span>M1, M2, M3, M4 · <span class="sz">36 MB</span></span></a>
-        <a class="os" id="dl-intel" rel="noopener"><b>Mac con Intel</b><span>Procesador Intel · <span class="sz">39 MB</span></span></a>
+        <a class="os" id="dl-win" rel="noopener"><b>Windows</b><span>Windows 10 y 11 · <span class="sz">51 MB</span></span></a>
+        <a class="os" id="dl-arm" rel="noopener"><b>Mac con chip Apple</b><span>M1, M2, M3, M4 · <span class="sz">41 MB</span></span></a>
+        <a class="os" id="dl-intel" rel="noopener"><b>Mac con Intel</b><span>Procesador Intel · <span class="sz">45 MB</span></span></a>
       </div>
       <div class="steps">
         <h3>Cómo abrirlo la primera vez</h3>
@@ -458,7 +458,7 @@ footer a { color: var(--hero-ink) }
 <footer>
   <div class="container">
     <a class="brand" href="#top"><svg aria-hidden="true"><use href="#logo"/></svg>Complex Education</a>
-    <span>Matemáticas interactivas para el aula · Versión <span id="app-version">1.0.4</span></span>
+    <span>Matemáticas interactivas para el aula · Versión <span id="app-version">1.0.5</span></span>
     <a href="#descargar">Descargar</a>
   </div>
 </footer>
@@ -466,13 +466,13 @@ footer a { color: var(--hero-ink) }
 <script>
 const BASE = "https://dqjaqavudeapmnzrmyzi.supabase.co/storage/v1/object/public/releases/";
 // The version on show is the REAL one: the same latest.json the installed programs read to update.
-// "1.0.4" is only used if the server can't be reached.
-let VERSION = "1.0.4";
+// "1.0.5" is only used if the server can't be reached.
+let VERSION = "1.0.5";
 const KIND = { win: "Windows", arm: "Mac_arm64", intel: "Mac_x86_64" };
 const FILES = {
-  win:   { label: "Descargar para Windows",            size: "49 MB" },
-  arm:   { label: "Descargar para Mac con chip Apple", size: "39 MB" },
-  intel: { label: "Descargar para Mac con Intel",      size: "43 MB" },
+  win:   { label: "Descargar para Windows",            size: "51 MB" },
+  arm:   { label: "Descargar para Mac con chip Apple", size: "41 MB" },
+  intel: { label: "Descargar para Mac con Intel",      size: "45 MB" },
 };
 const fileOf = k => "Complex_Education_" + VERSION + "_" + KIND[k] + ".zip";
 const url = k => BASE + fileOf(k) + "?download";

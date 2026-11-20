@@ -131,6 +131,15 @@ section { padding-block: clamp(56px, 9vw, 104px) }
 .mods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px }
 @media (max-width: 860px) { .mods { grid-template-columns: repeat(2, 1fr) } }
 @media (max-width: 560px) { .mods { grid-template-columns: 1fr } }
+.news { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px }
+@media (max-width: 960px) { .news { grid-template-columns: repeat(2, 1fr) } }
+@media (max-width: 600px) { .news { grid-template-columns: 1fr } }
+.new { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: grid; grid-template-rows: auto 1fr; box-shadow: 0 10px 30px -20px rgba(15, 26, 51, .35) }
+.new img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; border-bottom: 1px solid var(--line); background: var(--surface-2) }
+.new div { padding: 16px 18px 18px; display: grid; gap: 6px; align-content: start }
+.new .tag { justify-self: start; font: 600 12px/1 var(--body); color: var(--accent); background: var(--surface-2); padding: 5px 9px; border-radius: 999px }
+.new h3 { font-size: 17px; font-weight: 600 }
+.new p { color: var(--muted); font-size: 14px }
 .mod { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; gap: 6px }
 .mod .tag { justify-self: start; font: 600 12px/1 var(--body); color: var(--accent); background: var(--surface-2); padding: 5px 9px; border-radius: 999px }
 .mod h3 { font-size: 17px; font-weight: 600 }
@@ -200,6 +209,7 @@ footer a { color: var(--hero-ink) }
       <a href="#beneficios">Beneficios</a>
       <a href="#clase">La clase</a>
       <a href="#modulos">Módulos</a>
+      <a href="#novedades">Novedades</a>
       <a href="#preguntas">Preguntas</a>
     </div>
     <a class="btn btn-primary" href="#descargar">Descargar</a>
@@ -384,6 +394,30 @@ footer a { color: var(--hero-ink) }
       <article class="mod"><span class="tag">7° · Estadística</span><h3>Stem &amp; Leaf</h3><p>Diagramas de tallo y hoja: ordenar datos, moda, mediana y rango.</p></article>
       <article class="mod"><span class="tag">7° · Estadística</span><h3>Mean, Median &amp; Mode</h3><p>Medidas de tendencia central con balanzas y datos que se mueven.</p></article>
       <article class="mod"><span class="tag">8° · Estadística</span><h3>Spread</h3><p>Rango, cuartiles, diagramas de caja, datos atípicos y desviación.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="novedades">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Novedades · Versión <span id="news-version">1.0.5</span></span>
+      <h2>Lo nuevo en esta versión</h2>
+      <p>Nueve módulos nuevos de 9°, dos de 7°, misiones en línea con PIN y avatares animados. Aquí van algunos. Llegan solos a quienes ya tienen el programa.</p>
+    </div>
+    <div class="news">
+      <article class="new"><img src="img/n_avatars.jpg" alt="Captura de Avatares nuevos" loading="lazy" width="1280" height="800"><div><span class="tag">Para todos</span><h3>Avatares nuevos</h3><p>Cada docente y estudiante diseña su personaje: parpadea, mira a los lados y celebra con un salto cuando responde bien.</p></div></article>
+      <article class="new"><img src="img/n_greysky_student.jpg" alt="Captura de Operation Grey Sky con PIN" loading="lazy" width="1280" height="800"><div><span class="tag">7° · Geometría · En línea</span><h3>Operation Grey Sky con PIN</h3><p>Los estudiantes entran con el PIN desde su computador y el docente ve en vivo cada misil: acierto, error e intentos.</p></div></article>
+      <article class="new"><img src="img/n_rigid.jpg" alt="Captura de Rigid Transformations" loading="lazy" width="1280" height="800"><div><span class="tag">7° · Geometría</span><h3>Rigid Transformations</h3><p>Trasladar, reflejar y rotar figuras en el plano cartesiano, con papel calcante y reglas (x, y) → (−x, −y).</p></div></article>
+      <article class="new"><img src="img/n_charts.jpg" alt="Captura de Charts & Decisions" loading="lazy" width="1280" height="800"><div><span class="tag">7° · Estadística</span><h3>Charts & Decisions</h3><p>Elegir y construir diagramas de barras y circulares, comparar con media, mediana y moda, y descubrir gráficas engañosas.</p></div></article>
+      <article class="new"><img src="img/n_parabola.jpg" alt="Captura de Parabola Lab" loading="lazy" width="1280" height="800"><div><span class="tag">9° · Álgebra</span><h3>Parabola Lab</h3><p>Vértice, eje, raíces y modelos; completar el cuadrado con el modelo de áreas y la fórmula cuadrática.</p></div></article>
+      <article class="new"><img src="img/n_systems.jpg" alt="Captura de Systems Lab" loading="lazy" width="1280" height="800"><div><span class="tag">9° · Álgebra</span><h3>Systems Lab</h3><p>Sistemas de ecuaciones por gráfica, sustitución y eliminación, e inecuaciones con sus regiones.</p></div></article>
+      <article class="new"><img src="img/n_conics.jpg" alt="Captura de Conics Lab" loading="lazy" width="1280" height="800"><div><span class="tag">9° · Geometría · 3D</span><h3>Conics Lab</h3><p>Cortar el cono en 3D para obtener circunferencia, elipse, parábola e hipérbola, y leer sus ecuaciones.</p></div></article>
+      <article class="new"><img src="img/n_trig.jpg" alt="Captura de Trigonometry Lab" loading="lazy" width="1280" height="800"><div><span class="tag">9° · Geometría</span><h3>Trigonometry Lab</h3><p>SOH-CAH-TOA con situaciones reales: ángulos de elevación y depresión, y rumbos.</p></div></article>
+      <article class="new"><img src="img/n_solids.jpg" alt="Captura de Solids 3D" loading="lazy" width="1280" height="800"><div><span class="tag">9° · Geometría</span><h3>Solids 3D</h3><p>Arcos, sectores, área superficial y volumen; por ejemplo, desenrollar el cono para ver de dónde sale πrl.</p></div></article>
+      <article class="new"><img src="img/n_similar.jpg" alt="Captura de Similar & Circles" loading="lazy" width="1280" height="800"><div><span class="tag">9° · Geometría</span><h3>Similar & Circles</h3><p>Figuras semejantes y teoremas de la circunferencia, paso a paso.</p></div></article>
+      <article class="new"><img src="img/n_chance.jpg" alt="Captura de Chance & Decisions" loading="lazy" width="1280" height="800"><div><span class="tag">9° · Estadística</span><h3>Chance & Decisions</h3><p>Diagramas de árbol y de Venn, valor esperado y probabilidad condicional («dado que…»).</p></div></article>
+      <article class="new"><img src="img/n_data.jpg" alt="Captura de Data Lab" loading="lazy" width="1280" height="800"><div><span class="tag">9° · Estadística</span><h3>Data Lab</h3><p>Diagramas de dispersión, correlación, frecuencia acumulada y cuándo no extrapolar.</p></div></article>
     </div>
   </div>
 </section>
